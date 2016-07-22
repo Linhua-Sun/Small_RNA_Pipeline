@@ -23,8 +23,10 @@ fi
 
 for i in ${DATA}
 do
-	echo ${i}
+	ID=$(basename ${i} .fq.gz)
+	echo "Sample path is ${i}."
+	echo "Sample Id is ${ID}."
 	gzip -dc ${i} | bowtie -q -v 1 -p ${THREADS} -S -a -m 50 --best --strata ${REFGENOME} - -S | \
 	samtools view -@ ${THREADS} -b | \
-	sambamba sort -t ${THREADS} -o ${OUTDIR}/${RGID}_sorted.bam /dev/stdin
+	sambamba sort -t ${THREADS} -o ${OUTDIR}/${ID}_sorted.bam /dev/stdin
 done
