@@ -7,7 +7,7 @@
 # array: http://c.biancheng.net/cpp/view/7002.html
 
 
-OUTDIR="BIN_SHORT_STARK_RESULTS"
+OUTDIR="Final_4_samples_SHORT_STARK_RESULTS"
 REFGENOME="/sdd1/users/linhua/QIAN_LAB/ATH_SHORTSTARK/Athaliana_167.fa"
 DATA=($(find ./MAPPING_OUTPUT/ -name "*.bam"))
 
@@ -20,5 +20,5 @@ do
 	ID=$(basename ${DATA[i]} _R1_clean_sorted.bam)
 	echo "Sample ID is ${ID}."
 	echo "Value i=${i}."
-	New_ShortStack --outdir ${OUTDIR}/${ID}_OUTPUT --bamfile ${DATA[i]}  --genomefile ${REFGENOME} --locifile split_TAIR10_steps_200_loci.txt  &
+	New_ShortStack --outdir ${OUTDIR}/${ID}_OUTPUT --bamfile ${DATA[i]}  --genomefile ${REFGENOME} --locifile small_RNA_loci.txt  &
 done
